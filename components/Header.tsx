@@ -46,8 +46,8 @@ const products = [
 ];
 
 const callToActions = [
-  { name: "See Demo Booking", href: "#", icons: PlayCircleIcon },
-  { name: "Contact Support", href: "#", icons: PhoneIcon },
+  { name: "See Demo Booking", href: "#", icon: PlayCircleIcon },
+  { name: "Contact Support", href: "#", icon: PhoneIcon },
 ];
 
 function Header() {
@@ -76,7 +76,7 @@ function Header() {
           </button>
         </div>
 
-        <PopoverGroup className="hidden lg:flex lg:gap-x-12">
+        <PopoverGroup className="hidden items-center lg:flex lg:gap-x-12">
           <Popover className="relative">
             <PopoverButton className="inline-flex items-center justify-center rounded-md p-2.5 text-white">
               stays
@@ -122,10 +122,45 @@ function Header() {
                     </div>
                   ))}
                 </div>
+
+                <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+                  {callToActions.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-[#013b94] hover:bg-gray-100"
+                    >
+                      <item.icon
+                        className="h-5 w-5 flex-none text-[#013b94]"
+                        aria-hidden="true"
+                      />
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
               </PopoverPanel>
             </Transition>
           </Popover>
+
+          <a href="#" className="text-sm font-semibold leading-6 text-white">
+            Flights
+          </a>
+          <a href="#" className="text-sm font-semibold leading-6 text-white">
+            Car Rentals
+          </a>
+          <a href="#" className="text-sm font-semibold leading-6 text-white">
+            Attractions
+          </a>
+          <a href="#" className="text-sm font-semibold leading-6 text-white">
+            Flight + Hotel
+          </a>
         </PopoverGroup>
+
+        <div className="hidden lg:flex lg:justify-end">
+          <a href="#" className="text-sm font-semibold leading-6 text-white">
+            Log in <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
       </nav>
     </header>
   );
